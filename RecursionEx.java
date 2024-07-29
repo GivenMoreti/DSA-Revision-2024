@@ -1,7 +1,7 @@
 public class RecursionEx {
     public static void main(String[] args) {
 
-        // print(5);
+        print(4);
         // System.out.println(FiboNums(10));
         // System.out.println(addNums(5));
 
@@ -9,12 +9,12 @@ public class RecursionEx {
 
     static void print(int n) {
         // base case
-        if (n == 5) {
-            return;
+        if (n >= 5) {
+            return; 
         }
         System.out.print(n);
         // function call
-        print(n + 1);
+        print(n + 1); 
     }
 
     static int FiboNums(int n) {
