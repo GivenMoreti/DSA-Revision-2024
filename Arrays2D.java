@@ -27,10 +27,16 @@ public class Arrays2D {
             System.out.println();
         }
 
-        // using Arrays.toString(arr)
+        // using Arrays.toString(arr) which is same as 2d loop
         System.out.println("using Arrays.toString(arr)");
         for (int i = 0; i < arr.length; i++) {
             System.out.println(Arrays.toString(arr[i]));
+        }
+
+        // using enhnaced for loop to get the same outcome
+        System.out.println("------------------------");
+        for (int[] a : arr) {
+            System.out.println(Arrays.toString(a));
         }
 
     }

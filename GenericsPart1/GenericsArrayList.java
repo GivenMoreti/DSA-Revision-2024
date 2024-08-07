@@ -19,6 +19,18 @@ public class GenericsArrayList<T> {
         data[size++] = element;
     }
 
+    public void add(int index, T element) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("size = " + size + "& index: " + index);
+        }
+        // move elements to the right after adding.
+        for (int i = size - 1; i >= index; i--) {
+            data[i + 1] = data[i];
+        }
+        data[index] = element;
+        size++;
+    }
+
     private void resize() {
         T[] temp = (T[]) new Object[data.length * 2];
         // Object[] temp = new Object[data.length *2];
@@ -59,7 +71,9 @@ public class GenericsArrayList<T> {
         for (int i = index; i < size - 1; i++) {
             // each element at pos i is replaced with a following element
             data[i] = data[i + i];
+
         }
+        // data[size - 1] = null;
         size--;
         return removedElement;
 
@@ -73,23 +87,39 @@ public class GenericsArrayList<T> {
         data[index] = value;
     }
 
+    // check if the list is empty
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+    // count elements in the list
+
+    public int count() {
+        return size;
+    }
+
+    public boolean sort() {
+        T temp;
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - 1; j++) {
+                if (((Comparable) data[j]).compareTo(data[j + 1]) > 0) {
+                    temp = data[j + 1];
+                    data[j + 1] = data[j];
+                    data[j] = temp;
+                }
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         GenericsArrayList<Integer> myList = new GenericsArrayList<>();
-        // myList.add(3);
+        myList.add(12);
+        myList.add(3);
+        myList.add(5);
 
-        for (int i = 0; i < 12; i++) {
-            myList.add(2 + i);
-        }
-
-        GenericsArrayList<String> names = new GenericsArrayList<>();
-        names.add("Givenchie");
-        names.add("Tim");
-        names.add("Jane");
-        names.add("Doe");
-
+        myList.sort();
         System.out.println(myList);
-        System.out.println(names);
-        names.remove(2);
 
     }
 }
