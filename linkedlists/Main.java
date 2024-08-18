@@ -10,14 +10,25 @@ public class Main {
         ll.insertFirst(3);
         ll.insertFirst(12);
         ll.insertFirst(24);
+
+        // get min and max values from linkedlist
+        System.out.println(ll.getMin());
+
+        System.out.println(ll.getMax());
         ll.display();
 
-        // generic linkedlist
-        GenericLinkedList<Integer> genLList = new GenericLinkedList<>();
-        genLList.append(new Integer(30));
-        genLList.append(new Integer(26));
-        genLList.append(new Integer(90));
-        System.out.println(genLList);
+    }
+
+    public static int getMax(int[] arr) {
+        int max = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > arr[max]) {
+                arr[max] = arr[i];
+                return arr[max];
+            }
+        }
+        return 0;
 
     }
+
 }

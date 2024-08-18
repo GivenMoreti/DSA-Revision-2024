@@ -47,6 +47,36 @@ public class MyLinkedList {
         size++;
     }
 
+    // GET MIN AND MAX NODES
+
+    public int getMin() {
+
+        Node min = head;
+        Node temp = head;
+        while (temp.next != null) {
+            if (temp.value < min.value) {
+                min = temp;
+            }
+            temp = temp.next;
+        }
+
+        return min.value;
+    }
+
+    public int getMax() {
+
+        Node max = head;
+        Node temp = head;
+        while (temp.next != null) {
+            if (temp.value > max.value) {
+                max = temp;
+            }
+            temp = temp.next;
+        }
+
+        return max.value;
+    }
+
     // INNER CLASS
     private class Node {
         private int value;
