@@ -53,7 +53,9 @@ public class GenericsArrayList<T> {
 
     // removing at the end
     public T remove() {
-        T removed = data[--size];
+        // T removed = data[--size];
+        T removed = data[size];
+        size--;
         return removed;
 
     }

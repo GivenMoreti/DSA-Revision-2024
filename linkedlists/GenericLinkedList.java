@@ -51,7 +51,19 @@ public class GenericLinkedList<T> {
         return result;
     }
 
+    public void prepend(T element) {
+        Node<T> node = new Node<>(element);
+        node.next = head;
+        head = node;
+
+        // EMPTY LIST
+        if (tail == null) {
+            tail = head;
+        }
+    }
+
     // INNER CLASS
+
     private class Node<T> {
         T element;
         Node<T> next;
