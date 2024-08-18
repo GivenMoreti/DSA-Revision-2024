@@ -17,6 +17,14 @@ public class Main {
         System.out.println(ll.getMax());
         ll.display();
 
+        GenericLinkedList<Integer> genList = new GenericLinkedList<>();
+        genList.append(13);
+        genList.append(43);
+        genList.append(32);
+        System.out.println(genList.getMin());
+        System.out.println(genList.getMax());
+        System.out.println(genList.toString());
+
     }
 
     public static int getMax(int[] arr) {

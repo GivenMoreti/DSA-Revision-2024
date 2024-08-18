@@ -62,6 +62,32 @@ public class GenericLinkedList<T> {
         }
     }
 
+    // get min and max
+    public T getMin() {
+        Node min = head;
+        Node temp = head;
+        while (temp != null) {
+            if (((Comparable) temp.element).compareTo(min.element) < 1) {
+                min = temp;
+            }
+            temp = temp.next;
+        }
+        return (T) min.element;
+    }
+
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public T getMax() {
+        Node max = head;
+        Node temp = head;
+        while (temp != null) {
+            if (((Comparable) temp.element).compareTo(max.element) >= 1) {
+                max = temp;
+            }
+            temp = temp.next;
+        }
+        return (T) max.element;
+    }
+
     // INNER CLASS
 
     private class Node<T> {
