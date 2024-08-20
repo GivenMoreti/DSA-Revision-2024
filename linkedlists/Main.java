@@ -1,41 +1,28 @@
 package linkedlists;
 
 public class Main {
-    @SuppressWarnings("removal")
+
     public static void main(String[] args) {
-        MyLinkedList ll = new MyLinkedList();
 
-        // behaves like a stack LIFO
-        ll.insertFirst(23);
-        ll.insertFirst(3);
-        ll.insertFirst(12);
-        ll.insertFirst(24);
+        /*
+         * Test for merge method
+         */
 
-        // get min and max values from linkedlist
-        System.out.println(ll.getMin());
+        MyLinkedList firstLL = new MyLinkedList();
+        firstLL.insertLast(1);
+        firstLL.insertLast(1);
+        firstLL.insertLast(3);
+        MyLinkedList secondLL = new MyLinkedList();
+        secondLL.insertLast(12);
+        secondLL.insertLast(4);
+        secondLL.insertLast(13);
+        secondLL.insertLast(13);
 
-        System.out.println(ll.getMax());
-        ll.display();
+        MyLinkedList mergedList = MyLinkedList.merge(firstLL, secondLL);
 
-        GenericLinkedList<Integer> genList = new GenericLinkedList<>();
-        genList.append(13);
-        genList.append(43);
-        genList.append(32);
-        System.out.println(genList.getMin());
-        System.out.println(genList.getMax());
-        System.out.println(genList.toString());
-
-    }
-
-    public static int getMax(int[] arr) {
-        int max = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > arr[max]) {
-                arr[max] = arr[i];
-                return arr[max];
-            }
-        }
-        return 0;
+        mergedList.display();
+        mergedList.removeduplicates();
+        mergedList.display();
 
     }
 

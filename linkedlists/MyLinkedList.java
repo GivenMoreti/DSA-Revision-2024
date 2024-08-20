@@ -4,11 +4,11 @@ public class MyLinkedList {
 
     private Node head; // first node
     private Node tail; // last node
-    private int size; // number of nodes
 
     // OUTER CONSTRUCTOR
     public MyLinkedList() {
-        this.size = 0;
+        this.head = null;
+        this.tail = null;
     }
 
     // DISPLAY THE NODES IN THE LINKEDLIST
@@ -32,7 +32,7 @@ public class MyLinkedList {
         Node node = new Node(value);
         tail.next = node;
         tail = node;
-        size++;
+
     }
 
     public void insertFirst(int value) {
@@ -44,7 +44,7 @@ public class MyLinkedList {
         if (tail == null) {
             tail = head;
         }
-        size++;
+
     }
 
     // GET MIN AND MAX NODES
@@ -61,6 +61,68 @@ public class MyLinkedList {
         }
 
         return min.value;
+    }
+
+    public static MyLinkedList merge(MyLinkedList ll1, MyLinkedList ll2) {
+        MyLinkedList main = new MyLinkedList();
+        Node hFirst = ll1.head;
+        Node hSecond = ll2.head;
+
+        while (hFirst != null && hSecond != null) {
+            if (hFirst.value < hSecond.value) {
+                main.insertLast(hFirst.value);
+                hFirst = hFirst.next;
+            } else {
+                main.insertLast(hSecond.value);
+                hSecond = hSecond.next;
+            }
+        }
+
+        while (hFirst != null) {
+            main.insertLast(hFirst.value);
+            hFirst = hFirst.next;
+        }
+
+        while (hSecond != null) {
+            main.insertLast(hSecond.value);
+            hSecond = hSecond.next;
+        }
+
+        return main;
+    }
+
+    public void removeduplicates() {
+        Node temp = head;
+        // while (temp.next != null) {
+        // if (temp.value == temp.next.value) {
+        // temp.value = temp.next.next.value;
+        // } else {
+        // temp = temp.next;
+        // }
+        // }
+
+        for (temp = head; temp.next != null; temp = temp.next) {
+            if (temp.value == temp.next.value) {
+                temp.next = temp.next.next;
+            } else {
+                temp = temp.next;
+            }
+        }
+        tail = temp;
+        tail.next = null;
+
+    }
+
+    public static int getMax(int[] arr) {
+        int max = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > arr[max]) {
+                arr[max] = arr[i];
+                return arr[max];
+            }
+        }
+        return 0;
+
     }
 
     public int getMax() {

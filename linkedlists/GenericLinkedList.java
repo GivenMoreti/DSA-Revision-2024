@@ -62,10 +62,40 @@ public class GenericLinkedList<T> {
         }
     }
 
+    /* RETURNS A LIST WITHOUT DUPLICATES */
+    public GenericLinkedList<T> getUnique() {
+        GenericLinkedList<T> myUniques = new GenericLinkedList<>();
+        Node<T> cNode = head;
+
+        while (cNode != null) {
+            boolean isUnique = true;
+            Node<T> temp = head;
+
+            // Check if cNode.element is already in myUniques
+            while (temp != cNode) {
+                if (((Comparable) temp.element).compareTo(cNode.element) == 0) {
+                    isUnique = false;
+                    break;
+                }
+                temp = temp.next; // Advance pointer
+            }
+
+            // If unique, add to myUniques
+            if (isUnique) {
+                myUniques.append(cNode.element);
+            }
+
+            cNode = cNode.next; // Advance pointer
+        }
+
+        return myUniques;
+    }
+
     // get min and max
+
     public T getMin() {
-        Node min = head;
-        Node temp = head;
+        Node<T> min = head;
+        Node<T> temp = head;
         while (temp != null) {
             if (((Comparable) temp.element).compareTo(min.element) < 1) {
                 min = temp;
@@ -75,10 +105,9 @@ public class GenericLinkedList<T> {
         return (T) min.element;
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
     public T getMax() {
-        Node max = head;
-        Node temp = head;
+        Node<T> max = head;
+        Node<T> temp = head;
         while (temp != null) {
             if (((Comparable) temp.element).compareTo(max.element) >= 1) {
                 max = temp;
@@ -86,6 +115,83 @@ public class GenericLinkedList<T> {
             temp = temp.next;
         }
         return (T) max.element;
+    }
+
+    public boolean isPalindrome() {
+        Node<T> temp = head;
+        while (temp.next != null) {
+            // immediately theres a repeating elements in succession returns true
+            if (((Comparable) temp.element).compareTo(temp.next.element) == 0) {
+                return true;
+            }
+            temp = temp.next;
+        }
+        if (head == null) {
+            temp = null;
+        }
+
+        temp = tail;
+        temp.next = null;
+        return false;
+    }
+
+    /* RETURNS AN ARRAY WITH ELEMENTS BIGGER THAN THE INDEX SPECIFIED */
+    public GenericLinkedList<T> getFiltered(T item) {
+        GenericLinkedList<T> someList = new GenericLinkedList<>();
+        Node<T> temp = head;
+
+        while (temp != null) {
+            if (((Comparable) temp.element).compareTo(item) > 0) {
+
+                someList.append(temp.element); // append
+
+            }
+
+            temp = temp.next;
+        }
+
+        return someList;
+    }
+
+    /** Return the head element in the list */
+    public T getFirst() {
+        if (head == null) {
+            return null;
+        } else {
+            return head.element;
+        }
+    }
+
+    /** Return the last element in the list */
+    public T getLast() {
+        if (head == null) { // LIST IS EMPTY
+            return null;
+        } else {
+            return tail.element;
+        }
+    }
+
+    public boolean delete(T item) {
+        Node<T> ptr = head;
+        Node<T> prvPtr = null;
+        while (ptr != null && ((Comparable) ptr.element).compareTo(item) != 0) {
+            prvPtr = ptr;
+            ptr = ptr.next;
+        }
+        if (ptr == null) // item not found
+            return false;
+        if (ptr == head) // item is first element
+            head = head.next;
+        else // general case
+             // prvPtr.next = ptr.next; //lecturer's
+            prvPtr.next = prvPtr.next.next; // Given's
+        if (ptr == tail) // last element
+            tail = prvPtr; // reassign tail
+        return true;
+    }
+
+    public void clear() {
+        head = tail = null;
     }
 
     // INNER CLASS
