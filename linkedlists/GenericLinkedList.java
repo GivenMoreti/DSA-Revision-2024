@@ -13,9 +13,66 @@ public class GenericLinkedList<T> {
     /*
      * METHODS FOR THE OUTER CLASS
      */
+
+    public int getLength() {
+        int count = 0;
+
+        Node<T> temp = head;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+        return count;
+
+    }
+
+    public void insertAtIndex(int index, T value) throws Exception {
+
+        Node<T> node = new Node<T>(value);
+
+        if (index < 0) {
+            throw new Exception("Index out of range");
+
+        }
+
+        if (index == 1) {
+            // you are inserting at first position.
+
+            node.next = head;
+            head = node;
+            return;
+        }
+
+        // we need a previous pointer
+        Node<T> previous = head;
+        int count = 1;
+
+        // Check if the list is empty and index is greater than 1
+        if (previous == null) {
+            throw new IndexOutOfBoundsException("Cannot insert at index " + index + " in an empty list.");
+        }
+
+        while (count < index - 1) {
+
+            previous = previous.next;
+            count++;
+
+            // Check if the list is empty and index is greater than 1
+            if (previous == null) {
+                throw new IndexOutOfBoundsException("Cannot insert at index " + index + " in an empty list.");
+            }
+
+        }
+
+        Node<T> current = previous.next;
+        node.next = current;
+        previous.next = node;
+
+    }
+
     public void append(T element) {
 
-        Node<T> node = new Node<>(element); // node is the address
+        Node<T> node = new Node<T>(element); // node is the address
 
         // if the linkedlist is empty
         if (head == null) {
@@ -64,7 +121,7 @@ public class GenericLinkedList<T> {
 
     /* RETURNS A LIST WITHOUT DUPLICATES */
     public GenericLinkedList<T> getUnique() {
-        GenericLinkedList<T> myUniques = new GenericLinkedList<>();
+        GenericLinkedList<T> myUniques = new GenericLinkedList<T>();
         Node<T> cNode = head;
 
         while (cNode != null) {
@@ -137,7 +194,7 @@ public class GenericLinkedList<T> {
 
     /* RETURNS AN ARRAY WITH ELEMENTS BIGGER THAN THE INDEX SPECIFIED */
     public GenericLinkedList<T> getFiltered(T item) {
-        GenericLinkedList<T> someList = new GenericLinkedList<>();
+        GenericLinkedList<T> someList = new GenericLinkedList<T>();
         Node<T> temp = head;
 
         while (temp != null) {
@@ -194,6 +251,117 @@ public class GenericLinkedList<T> {
         head = tail = null;
     }
 
+    // how many elements are in the list
+    public int getSize() {
+        Node<T> temp = head;
+        int count = 0;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+
+        return count;
+    }
+
+    public void swap(Node<T> node1, Node<T> node2) {
+        Node<T> temp = node1;
+        node1 = node2;
+        node2 = temp;
+    }
+
+    public void swap(T item, T item2) {
+        T temp = item;
+        item = item2;
+        item2 = temp;
+    }
+
+    /* REVERSE A SINGLY LINKED LIST */
+    public void reverse() {
+        // swap head and tail
+        Node<T> current = head;
+        Node<T> next = null;
+        Node<T> prev = null;
+
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+
+        }
+        head = prev;
+    }
+
+    public boolean contains(T item) {
+        Node<T> temp = head;
+        while (temp != null) {
+            if (temp.element == item) {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
+    public void insertFirst(T value) {
+        // create a node
+        Node<T> node = new Node<T>(value);
+        node.next = head;
+        head = node;
+
+        if (tail == null) {
+            tail = head;
+        }
+
+    }
+
+    // INSERT ELEMENT AT THE LAST NODE.
+    public void insertLast(T value) {
+
+        if (tail == null) {
+            insertFirst(value);
+            return;
+        }
+        // create a node
+        Node<T> node = new Node<T>(value);
+        tail.next = node;
+        tail = node;
+
+    }
+
+    /* MERGING OF TWO LINKEDLISTS */
+    public GenericLinkedList<T> merge(GenericLinkedList<T> genList1, GenericLinkedList<T> genList2) {
+        GenericLinkedList<T> main = new GenericLinkedList<T>();
+        Node<T> hFirst = genList1.head;
+        Node<T> hSecond = genList2.head;
+
+        while (hFirst != null && hSecond != null) {
+            if (((Comparable) hFirst.element).compareTo(hSecond.element) < 0) {
+                main.insertLast(hFirst.element);
+                hFirst = hFirst.next;
+            } else {
+                main.insertLast(hSecond.element);
+                hSecond = hSecond.next;
+            }
+        }
+
+        while (hFirst != null) {
+            main.insertLast(hFirst.element);
+            hFirst = hFirst.next;
+        }
+
+        while (hSecond != null) {
+            main.insertLast(hSecond.element);
+            hSecond = hSecond.next;
+        }
+
+        return main;
+    }
+
+    // public T midElement(){
+    // T mid;
+    // return mid;
+    // }
     // INNER CLASS
 
     private class Node<T> {
