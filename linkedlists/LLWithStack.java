@@ -1,16 +1,27 @@
 package linkedlists;
 
-public class LL<T> {
+public class LLWithStack<T> {
     private Node<T> head;
     private Node<T> tail;
-    private int length;
+    private int length; // MAINTAIN STACK.
 
-    public LL() {
+    public LLWithStack() {
         this.head = null;
         this.tail = null;
         length = 0;
     }
+
     /* STACK METHODS */
+
+    // CHECK IF STACK IS EMPTY
+    public boolean isEmpty() {
+        return length == 0;
+    }
+
+    // GET LENGTH OF THE STACK
+    public int getLength() {
+        return this.length;
+    }
 
     // push - ADD AT THE TOP
     public void push(T value) {
@@ -64,17 +75,23 @@ public class LL<T> {
 
     // clear
     public void clear() {
-
+        head = tail = null;
     }
 
     // get first
-    public void getFirst() {
-
+    public T getFirst() {
+        if (head == null) {
+            return null;
+        }
+        return head.value;
     }
 
     // get last
-    public void getLast() {
-
+    public T getLast() {
+        if (tail == null) {
+            return null;
+        }
+        return tail.value;
     }
 
     // append
@@ -112,7 +129,36 @@ public class LL<T> {
         }
     }
 
-    // delete
+    // delete at an index
+    public boolean deleteIndex(int index) {
+        Node<T> prev = head;
+        Node<T> temp = head;
+
+        if (temp == null) {
+            return false;
+        }
+
+        int count = 1;
+        while (count < index - 1) {
+
+            prev = prev.next;
+            count++;
+        }
+
+        prev.next = prev.next.next;
+
+        return true;
+    }
+
+    public boolean deleteItem(Node<T> item) {
+        Node<T> temp = head;
+
+        if (head == null) {
+            return false;
+        }
+
+        return false;
+    }
 
     // reverse
 

@@ -1,3 +1,7 @@
+/*
+ * THIS GENERIC LINKEDLIST CONTAINS ALL THE METHODS YOU CAN POTENTIALLY THINK OF.
+ */
+
 package linkedlists;
 
 public class GenericLinkedList<T> {
@@ -14,6 +18,26 @@ public class GenericLinkedList<T> {
      * METHODS FOR THE OUTER CLASS
      */
 
+    /* MERGING USING THIS LINKEDLIST */
+
+    public GenericLinkedList<T> mergeThis(GenericLinkedList<T> paramList) {
+        Node<T> ptrThis = head;
+        Node<T> ptrParam = paramList.head;
+        GenericLinkedList<T> returnList = new GenericLinkedList<T>();
+
+        while (ptrThis != null && ptrParam != null) {
+            if (((Comparable) ptrThis.element).compareTo(ptrParam.element) <= 0) {
+                returnList.append(ptrThis.element);
+                ptrThis = ptrThis.next;
+            } else {
+                returnList.append(ptrParam.element);
+                ptrParam = ptrParam.next;
+            }
+        }
+        return returnList;
+    }
+
+    /* GET LENGTH OF THE LL */
     public int getLength() {
         int count = 0;
 
@@ -26,6 +50,7 @@ public class GenericLinkedList<T> {
 
     }
 
+    /* INSERT AT A GIVEN INDEX */
     public void insertAtIndex(int index, T value) throws Exception {
 
         Node<T> node = new Node<T>(value);
@@ -70,17 +95,17 @@ public class GenericLinkedList<T> {
 
     }
 
+    /* INSERT AT THE END OF THE LINKEDLIST */
     public void append(T element) {
 
         Node<T> node = new Node<T>(element); // node is the address
 
         // if the linkedlist is empty
         if (head == null) {
-            // append(element);
-            // return;
+
             head = tail = node;
         } else {
-
+            // insert at the end
             tail.next = node;
             tail = node; // tail is now on the last node
 
@@ -108,8 +133,9 @@ public class GenericLinkedList<T> {
         return result;
     }
 
+    /* INSERT AT THE BEGINNING OF THE LL */
     public void prepend(T element) {
-        Node<T> node = new Node<>(element);
+        Node<T> node = new Node<T>(element);
         node.next = head;
         head = node;
 
@@ -127,7 +153,6 @@ public class GenericLinkedList<T> {
         while (cNode != null) {
             boolean isUnique = true;
             Node<T> temp = head;
-
             // Check if cNode.element is already in myUniques
             while (temp != cNode) {
                 if (((Comparable) temp.element).compareTo(cNode.element) == 0) {
@@ -263,6 +288,7 @@ public class GenericLinkedList<T> {
         return count;
     }
 
+    /* SWAP TWO NODES */
     public void swap(Node<T> node1, Node<T> node2) {
         Node<T> temp = node1;
         node1 = node2;
@@ -303,32 +329,6 @@ public class GenericLinkedList<T> {
         return false;
     }
 
-    public void insertFirst(T value) {
-        // create a node
-        Node<T> node = new Node<T>(value);
-        node.next = head;
-        head = node;
-
-        if (tail == null) {
-            tail = head;
-        }
-
-    }
-
-    // INSERT ELEMENT AT THE LAST NODE.
-    public void insertLast(T value) {
-
-        if (tail == null) {
-            insertFirst(value);
-            return;
-        }
-        // create a node
-        Node<T> node = new Node<T>(value);
-        tail.next = node;
-        tail = node;
-
-    }
-
     /* MERGING OF TWO LINKEDLISTS */
     public GenericLinkedList<T> merge(GenericLinkedList<T> genList1, GenericLinkedList<T> genList2) {
         GenericLinkedList<T> main = new GenericLinkedList<T>();
@@ -337,25 +337,51 @@ public class GenericLinkedList<T> {
 
         while (hFirst != null && hSecond != null) {
             if (((Comparable) hFirst.element).compareTo(hSecond.element) < 0) {
-                main.insertLast(hFirst.element);
+                main.append(hFirst.element);
                 hFirst = hFirst.next;
             } else {
-                main.insertLast(hSecond.element);
+                main.append(hSecond.element);
                 hSecond = hSecond.next;
             }
         }
 
         while (hFirst != null) {
-            main.insertLast(hFirst.element);
+            main.append(hFirst.element);
             hFirst = hFirst.next;
         }
 
         while (hSecond != null) {
-            main.insertLast(hSecond.element);
+            main.append(hSecond.element);
             hSecond = hSecond.next;
         }
 
         return main;
+    }
+
+    public void insertAtSomeIndex(int index, T item) {
+
+        if (index < 0) {
+            System.out.println("index out of bounds");
+            return;
+        }
+
+        if (index == 1) {
+            append(item);
+            return;
+        }
+
+        // create node
+        Node<T> node = new Node<T>(item);
+        Node<T> prev = head;
+
+        int count = 1;
+        while (count < index - 1) {
+            prev = prev.next;
+            count++;
+        }
+        Node<T> current = prev.next;
+        node.next = current;
+        prev.next = node;
     }
 
     // public T midElement(){

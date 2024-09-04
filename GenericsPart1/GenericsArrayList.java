@@ -12,6 +12,7 @@ public class GenericsArrayList<T> {
         size = 0;
     }
 
+    // at at the end
     public void add(T element) {
         if (isFull()) {
             resize();
@@ -75,7 +76,7 @@ public class GenericsArrayList<T> {
             data[i] = data[i + i];
 
         }
-        // data[size - 1] = null;
+        data[size - 1] = null;
         size--;
         return removedElement;
 
@@ -112,6 +113,22 @@ public class GenericsArrayList<T> {
             }
         }
         return true;
+
+    }
+
+    public void filter(T low, T high) {
+        GenericsArrayList<T> newArr = new GenericsArrayList<T>();
+        for (int i = 0; i < newArr.size; i++) {
+            if (((Comparable) newArr.get(i)).compareTo(low) >= 0) {
+
+                newArr.add(low);
+            }
+
+            if (((Comparable) newArr.get(i)).compareTo(high) <= 0) {
+                newArr.add(high);
+            }
+        }
+        // System.out.println(newArr);
     }
 
     public static void main(String[] args) {
@@ -122,6 +139,7 @@ public class GenericsArrayList<T> {
 
         myList.sort();
         System.out.println(myList);
+        myList.filter(5, 13);
 
     }
 }

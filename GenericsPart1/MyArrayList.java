@@ -18,7 +18,7 @@ public class MyArrayList {
         if (isFull()) {
             resize();
         }
-        // add at the end of the size
+        // add at the end of the size or append
         data[size++] = num;
     }
 

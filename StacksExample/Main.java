@@ -1,11 +1,11 @@
 package StacksExample;
 
-import linkedlists.LL;
+import linkedlists.LLWithStack;
 
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        LL<Integer> myStack = new LL<Integer>();
+        LLWithStack<Integer> myStack = new LLWithStack<Integer>();
         myStack.push(99);
         myStack.push(9);
         myStack.push(111);
@@ -19,9 +19,12 @@ public class Main {
         myStack.pop();
         System.out.println(myStack);
 
-    
-
-
+        LLWithStack<String> sList = new LLWithStack<String>();
+        sList.push("Hello");
+        sList.push("World");
+        sList.push("Hi");
+        sList.push("xx");
+        System.out.println(sList);
 
         /* stack test */
         // CustomStack stack = new CustomStack(4);
