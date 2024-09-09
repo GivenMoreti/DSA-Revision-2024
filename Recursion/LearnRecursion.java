@@ -1,11 +1,15 @@
 public class LearnRecursion {
     public static void main(String[] args) {
-        print(4);
+        int[] list = { 1, 2, 3, 4, 5 };
+        System.out.println(method1(list, 0));
 
-        int[] myarr = { 2, 3, 5 };
+    }
 
-        System.out.println(sum(myarr));
-        System.out.println(sum(myarr, myarr.length));
+    public static String method1(int[] val, int i) {
+        if (i == val.length)
+            return "3";
+        else
+            return val[i] + method1(val, i + 1) + val[i];
     }
 
     // print nnumbers

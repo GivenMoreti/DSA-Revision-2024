@@ -59,6 +59,48 @@ public class MySecondLinkedList<T> {
         return res;
     }
 
+    public boolean isPalindrome() {
+        if (head == null || head.next == null) {
+            return true; // A single node or empty list is a palindrome
+        }
+    
+        Node<T> temp = head;
+
+    
+        // Helper method to find the nth node from the end (for traversal)
+        int size = getSize();
+        
+        for (int i = 0; i < size / 2; i++) {
+            // Compare elements of temp (from the start) and last (from the end)
+            if (!temp.element.equals(getNthFromEnd(i + 1).element)) {
+                return false; // If any element mismatch, it's not a palindrome
+            }
+            temp = temp.next; // Move temp forward
+        }
+    
+        return true; // If all elements match, it's a palindrome
+    }
+    
+    private int getSize() {
+        Node<T> current = head;
+        int size = 0;
+        while (current != null) {
+            size++;
+            current = current.next;
+        }
+        return size;
+    }
+    
+    private Node<T> getNthFromEnd(int n) {
+        Node<T> current = head;
+        int target = getSize() - n;
+        for (int i = 0; i < target; i++) {
+            current = current.next;
+        }
+        return current;
+    }
+    
+
     // delete
 
     // sort
