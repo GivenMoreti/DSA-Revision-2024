@@ -20,7 +20,15 @@ public class CustomTree<T> {
 
     }
 
-    // TRAVERSE THE TREE
+    // TRAVERSE THE TREE RECURSIVELY
+    public void preOrder(Node<T> node) {
+        if (root == null) {
+            return;
+        }
+        System.out.println(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
 
     private class Node<T> {
         private Node<T> left;
