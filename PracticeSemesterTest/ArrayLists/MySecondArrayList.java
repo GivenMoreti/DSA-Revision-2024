@@ -23,9 +23,9 @@ public class MySecondArrayList<T> {
         if (isFull()) {
             resize();
         }
-        // shift items first if list is not empty
+        // shift items to right if list is not empty
         for (int i = size - 1; i > 0; i--) {
-            data[i + 1] = data[i];
+            data[i + 1] = data[i]; // assign in next element space the current element
         }
         data[0] = item;
         size++;
@@ -41,7 +41,7 @@ public class MySecondArrayList<T> {
         if (isFull()) {
             resize();
         }
-        // shift to the right
+        // shift elements to the right
         for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
         }
@@ -92,12 +92,14 @@ public class MySecondArrayList<T> {
 
     // DELETE AT THE END
     public T deleteEnd() {
-
-        T deletedItem = data[size];
+        // empty list
         if (size == 0) {
             throw new IllegalStateException("Empty list");
         }
-        data[size] = null;
+
+        T deletedItem = data[size - 1];
+
+        data[size - 1] = null;
 
         size--;
         return deletedItem;
@@ -112,7 +114,7 @@ public class MySecondArrayList<T> {
             deleteStart();
         }
 
-        if (index == size) {
+        if (index == size - 1) {
             deleteEnd();
         }
         T deleted = data[index];
@@ -120,7 +122,7 @@ public class MySecondArrayList<T> {
         for (int i = 0; i < size - 1; i++) {
             data[i] = data[i + 1];
         }
-        data[size] = null;
+        data[size - 1] = null;
         size--;
 
         return deleted;

@@ -199,6 +199,7 @@ public class GenericLinkedList<T> {
         return (T) max.element;
     }
 
+    // come to correct it
     public boolean isPalindrome() {
         Node<T> temp = head;
         while (temp.next != null) {
