@@ -1,5 +1,8 @@
 package linkedlists;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MyThirdLinkedList<T> {
 
     Node<T> head;
@@ -26,10 +29,90 @@ public class MyThirdLinkedList<T> {
         return rList;
     }
 
-    // sort
+    public MyThirdLinkedList<T> getUnique() {
+        MyThirdLinkedList<T> rList = new MyThirdLinkedList<>();
+        Node<T> temp = head;
+        while (temp != null) {
+
+            boolean present = false;
+            Node<T> temp2 = rList.head;
+
+            while (temp2 != null) {
+                if (((Comparable) temp.element).compareTo(temp2.element) == 0) {
+                    present = true;
+                    break;
+                }
+                temp2 = temp2.next;
+            }
+            if (!present) {
+                rList.append(temp.element);
+
+            }
+            temp = temp.next;
+        }
+        return rList;
+    }
 
     // merge
-    
+    public MyThirdLinkedList<T> merge(MyThirdLinkedList<T> list1, MyThirdLinkedList<T> list2) {
+        MyThirdLinkedList<T> rList = new MyThirdLinkedList<T>();
+        // start with first list1
+        Node<T> temp1 = list1.head;
+        Node<T> temp2 = list2.head;
+
+        while (temp1 != null && temp2 != null) {
+            if (((Comparable) temp1.element).compareTo(temp2.element) < 0) {
+                rList.append(temp1.element);
+                temp1 = temp1.next;
+            } else {
+                rList.append(temp2.element);
+                temp2 = temp2.next;
+            }
+        }
+
+        // for the remaining elements
+        while (temp1 != null) {
+            rList.append(temp1.element);
+            temp1 = temp1.next;
+        }
+
+        // remaining items in 2
+        while (temp2 != null) {
+            rList.append(temp2.element);
+            temp2 = temp2.next;
+        }
+
+        return rList;
+
+    }
+
+    // ispalindrome
+
+    public boolean isPalindrome(MyThirdLinkedList<T> list) {
+        Node<T> temp = list.head;
+        Node<T> temp2 = list.tail;
+
+        if (list.head == null) {
+            return false;
+        }
+
+        if (list.head == list.tail) {
+            return true;
+        }
+
+        int count = 1;
+        Node<T> prev = head;
+        Node<T> prev2 = head;
+        while (count < list.getSize() - 1) {
+            count++;
+            prev = prev.next; // advance pointer
+
+        }
+
+        return false;
+    }
+
+    // sort
 
     // return in between indexes
     public MyThirdLinkedList<T> betweenElements(MyThirdLinkedList<T> paramList, T element, T element2) {
@@ -182,6 +265,35 @@ public class MyThirdLinkedList<T> {
         head = head.next;
 
     }
+
+    // public MyThirdLinkedList sharedElements(MyThirdLinkedList otherList) {
+    //     Set<Integer> sharedSet = new HashSet<>();
+    //     Set<Integer> uniqueSet = new HashSet<>();
+
+    //     // Traverse the parameter list and add elements to uniqueSet
+    //     Node temp = otherList.head;
+    //     while (temp != null) {
+    //         uniqueSet.append(temp.element);
+    //         temp = temp.next;
+    //     }
+
+    //     // Traverse the calling list and add common elements to sharedSet
+    //     temp = this.head;
+    //     while (temp != null) {
+    //         if (uniqueSet.contains(temp.element)) {
+    //             sharedSet.add(temp.element); // HashSet ensures no duplicates
+    //         }
+    //         temp = temp.next;
+    //     }
+
+    //     // Create a new linked list with shared elements
+    //     MyLinkedList result = new MyLinkedList();
+    //     for (int value : sharedSet) {
+    //         result.add(value);
+    //     }
+
+    //     return result;
+    // }
 
     private class Node<T> {
         T element;

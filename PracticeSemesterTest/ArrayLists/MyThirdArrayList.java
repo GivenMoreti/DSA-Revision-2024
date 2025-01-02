@@ -133,6 +133,28 @@ public class MyThirdArrayList<T> {
         return removedElement;
     }
 
+    // isPalindrome
+
+    public boolean isPalindrome(MyThirdArrayList<T> list) {
+        int last = list.getSize() - 1;
+        int first = 0;
+        if (list.getSize() == 0) {
+            return false;
+        }
+
+        if (list.getSize() == 1) {
+            return true;
+        }
+        while (first < last) {
+            if (last != first) {
+                return false;
+            }
+            first++;
+            last--;
+        }
+        return true;
+    }
+
     // delete element at specified index
     public T delete(int index) {
         if (index < 0 || index > size) {

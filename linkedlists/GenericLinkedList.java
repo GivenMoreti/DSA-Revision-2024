@@ -199,22 +199,28 @@ public class GenericLinkedList<T> {
         return (T) max.element;
     }
 
-    // come to correct it
-    public boolean isPalindrome() {
-        Node<T> temp = head;
-        while (temp.next != null) {
-            // immediately theres a repeating elements in succession returns true
-            if (((Comparable) temp.element).compareTo(temp.next.element) == 0) {
-                return true;
-            }
-            temp = temp.next;
-        }
-        if (head == null) {
-            temp = null;
+    //
+    public boolean isPalindrome(GenericLinkedList<T> list) {
+        Node<T> temp = list.head;
+        Node<T> temp2 = list.tail;
+
+        if (list.head == null) {
+            return false;
         }
 
-        temp = tail;
-        temp.next = null;
+        if (list.head == list.tail) {
+            return true;
+        }
+
+        int count = 1;
+        Node<T> prev = head;
+        Node<T> prev2 = head;
+        while (count < list.getSize() - 1) {
+            count++;
+            prev = prev.next; // advance pointer
+
+        }
+
         return false;
     }
 
@@ -265,6 +271,7 @@ public class GenericLinkedList<T> {
             return false;
         if (ptr == head) // item is first element
             head = head.next;
+
         else // general case
              // prvPtr.next = ptr.next; //lecturer's
             prvPtr.next = prvPtr.next.next; // Given's
@@ -386,6 +393,7 @@ public class GenericLinkedList<T> {
     }
 
     // public T midElement(){
+    
     // T mid;
     // return mid;
     // }

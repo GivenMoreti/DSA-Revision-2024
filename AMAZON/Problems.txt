@@ -1,0 +1,149 @@
+Here’s a list of 100 simple Java problems to help you prepare for your Amazon interview. These problems cover a range of topics from basic programming to intermediate concepts commonly asked in technical interviews.
+
+---
+
+### **Basic Java Problems**
+1. Print "Hello, World!".
+2. Write a program to swap two numbers.
+3. Check if a number is odd or even.
+4. Find the maximum of three numbers.
+5. Print the multiplication table of a number.
+6. Check if a number is positive, negative, or zero.
+7. Count the number of digits in an integer.
+8. Reverse a number.
+9. Find the factorial of a number.
+10. Check if a number is a palindrome.
+11. Check if a number is prime.
+12. Print all prime numbers in a range.
+13. Find the GCD (Greatest Common Divisor) of two numbers.
+14. Find the LCM (Least Common Multiple) of two numbers.
+15. Check if a number is an Armstrong number.
+16. Find the sum of digits of a number.
+17. Find the Fibonacci sequence up to N terms.
+18. Check if a number is part of the Fibonacci sequence.
+19. Convert Celsius to Fahrenheit.
+20. Convert binary to decimal.
+
+---
+
+### **String Manipulation**
+21. Reverse a string.
+22. Check if a string is a palindrome.
+23. Count the number of vowels and consonants in a string.
+24. Find the length of a string without using `.length()`.
+25. Check if two strings are anagrams.
+26. Remove duplicates from a string.
+27. Find the first non-repeating character in a string.
+28. Check if a string contains only digits.
+29. Replace all spaces in a string with underscores.
+30. Count the number of words in a string.
+
+---
+
+### **Array Problems**
+31. Find the largest and smallest element in an array.
+32. Find the second largest element in an array.
+33. Reverse an array.
+34. Check if an array is sorted.
+35. Find the sum of all elements in an array.
+36. Find the frequency of each element in an array.
+37. Merge two sorted arrays.
+38. Rotate an array by K positions.
+39. Find the missing number in an array of 1 to N.
+40. Find the duplicate element in an array.
+
+---
+
+### **Search and Sort**
+41. Implement linear search.
+42. Implement binary search.
+43. Sort an array using bubble sort.
+44. Sort an array using selection sort.
+45. Sort an array using insertion sort.
+46. Sort an array using quick sort.
+47. Sort an array using merge sort.
+48. Find the Kth largest element in an array.
+49. Find the intersection of two arrays.
+50. Find the union of two arrays.
+
+---
+
+### **Matrix Problems**
+51. Print a 2D matrix.
+52. Find the transpose of a matrix.
+53. Add two matrices.
+54. Multiply two matrices.
+55. Check if a matrix is symmetric.
+56. Rotate a matrix by 90 degrees.
+57. Check if a matrix is an identity matrix.
+58. Find the sum of each row in a matrix.
+59. Find the sum of each column in a matrix.
+60. Check if a given 2D array is a magic square.
+
+---
+
+### **Recursion**
+61. Find the factorial of a number using recursion.
+62. Print the Fibonacci sequence using recursion.
+63. Reverse a string using recursion.
+64. Find the GCD of two numbers using recursion.
+65. Solve the Tower of Hanoi problem.
+66. Check if a string is a palindrome using recursion.
+67. Find the sum of digits of a number using recursion.
+68. Calculate the power of a number using recursion.
+69. Generate all subsets of a set using recursion.
+70. Solve the N-Queens problem.
+
+---
+
+### **Dynamic Programming**
+71. Solve the Fibonacci sequence using dynamic programming.
+72. Find the longest increasing subsequence in an array.
+73. Solve the knapsack problem.
+74. Find the minimum number of coins for a given amount.
+75. Find the longest common subsequence of two strings.
+76. Find the longest palindrome subsequence in a string.
+77. Solve the edit distance problem.
+78. Solve the maximum subarray sum problem.
+79. Count the number of ways to climb stairs.
+80. Solve the rod cutting problem.
+
+---
+
+### **Linked List Problems**
+81. Implement a singly linked list.
+82. Implement a doubly linked list.
+83. Reverse a linked list.
+84. Detect a cycle in a linked list.
+85. Find the middle of a linked list.
+86. Merge two sorted linked lists.
+87. Remove duplicates from a linked list.
+88. Find the intersection point of two linked lists.
+89. Check if a linked list is a palindrome.
+90. Find the Nth node from the end of a linked list.
+
+---
+
+### **Tree Problems**
+91. Implement a binary tree.
+92. Implement a binary search tree.
+93. Perform in-order traversal of a binary tree.
+94. Perform pre-order traversal of a binary tree.
+95. Perform post-order traversal of a binary tree.
+96. Find the height of a binary tree.
+97. Find the lowest common ancestor of two nodes.
+98. Check if a tree is a binary search tree.
+99. Count the number of leaf nodes in a binary tree.
+100. Print all paths from root to leaf in a binary tree.
+
+---
+
+### **How to Approach**
+
+1. **Practice Regularly**: Try to solve 2–3 problems daily.
+2. **Start Simple**: Focus on the easy problems first to build confidence.
+3. **Code and Debug**: Write code on your own and debug actively.
+4. **Analyze Complexity**: Understand the time and space complexity of your solutions.
+5. **Review Solutions**: Compare your solution with others for better approaches.
+
+Would you like to focus on a specific topic or need any explanations for these problems? 😊

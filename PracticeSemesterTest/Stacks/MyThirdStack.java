@@ -23,7 +23,7 @@ public class MyThirdStack<T> {
         T temp = null;
         if (stack.getSize() > 0) {
 
-            temp = stack.delete(stack.getSize() - 1);
+            temp = stack.delete(stack.getSize() - 1);   //remove the last element
         }
         return temp;
     }
